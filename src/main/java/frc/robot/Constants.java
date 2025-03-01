@@ -32,6 +32,18 @@ public final class Constants
 //    public static final PIDConstants ANGLE_PID       = new PIDConstants(0.4, 0, 0.01);
 //  }
 
+public static final class OIConstants {
+  public static final int kDriverControllerPort = 0;
+  public static final int kOperatorControllerPort = 1;
+  public static final double kClimbDeadband = 0.10;
+}
+
+public static final class MechanismConstants{
+  public static final int kClimbLeftCanId = 14;
+  public static final int kClimbRightCanId = 17;
+
+}
+
   public static final class DrivebaseConstants
   {
 

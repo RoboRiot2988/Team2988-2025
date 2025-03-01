@@ -4,6 +4,11 @@
 
 package frc.robot;
 
+import frc.robot.commands.Climber;
+import frc.robot.subsystems.ClimberRightSubsystem;
+import frc.robot.subsystems.ClimberLeftSubsystem;
+
+
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -31,6 +36,11 @@ import swervelib.SwerveInputStream;
  */
 public class RobotContainer
 {
+
+  public static ClimberLeftSubsystem m_ClimbL;
+  public static ClimberRightSubsystem m_ClimbR;
+
+
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   final GenericHID driverXbox = new GenericHID(0);
@@ -101,6 +111,9 @@ public class RobotContainer
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
+
+    m_ClimbL = new ClimberLeftSubsystem();
+    m_ClimbR = new ClimberRightSubsystem();
   }
 
   /**
@@ -115,6 +128,22 @@ public class RobotContainer
     // Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
     Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
     Command driveRobotOrientedAngularVelocity  = drivebase.driveFieldOriented(driveRobotOriented);
+
+    //driverXbox.button(1).whileTrue(m_Climb.moveLeftClimbUp());
+
+
+    Trigger ClimbUpL = new Trigger(() -> driverXbox.getRawButton(5));
+     ClimbUpL.whileTrue(Climber.moveLeftClimberUp());
+
+     Trigger ClimbDownL = new Trigger(() -> driverXbox.getRawButton(3));
+     ClimbDownL.whileTrue(Climber.moveLeftClimberDown());
+
+     Trigger ClimbUpR = new Trigger(() -> driverXbox.getRawButton(6));
+     ClimbUpR.whileTrue(Climber.moveRightClimberUp());
+
+     Trigger ClimbDownR = new Trigger(() -> driverXbox.getRawButton(4));
+     ClimbDownR.whileTrue(Climber.moveRightClimberDown());
+
     // Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
     //     driveDirectAngle);
     // Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
