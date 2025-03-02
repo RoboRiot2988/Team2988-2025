@@ -27,11 +27,11 @@ public class ClimberRightSubsystem extends SubsystemBase {
   }
 
  public void moveRightClimbUp(){
-    climbMotorRight.set(-0.4);
+    climbMotorRight.set(0.5);
  }
 
   public void moveRightClimbDown(){
-    climbMotorRight.set(0.4);
+    climbMotorRight.set(-0.5);
  }
 
   /**
