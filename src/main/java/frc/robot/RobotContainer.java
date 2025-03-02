@@ -37,8 +37,8 @@ import swervelib.SwerveInputStream;
 public class RobotContainer
 {
 
-  public static ClimberLeftSubsystem m_ClimbL;
-  public static ClimberRightSubsystem m_ClimbR;
+  public static ClimberLeftSubsystem m_ClimbL = new ClimberLeftSubsystem();
+  public static ClimberRightSubsystem m_ClimbR = new ClimberRightSubsystem();
 
 
 
@@ -111,9 +111,6 @@ public class RobotContainer
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
-
-    m_ClimbL = new ClimberLeftSubsystem();
-    m_ClimbR = new ClimberRightSubsystem();
   }
 
   /**
@@ -157,6 +154,8 @@ public class RobotContainer
     } else
     {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
+      m_ClimbL.setDefaultCommand(Climber.stopClimberLeft());
+      m_ClimbR.setDefaultCommand(Climber.stopClimberRight());
     }
 
     if (Robot.isSimulation())

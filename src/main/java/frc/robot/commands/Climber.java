@@ -19,6 +19,13 @@ public class Climber {
     );
   }
 
+  public static Command stopClimberLeft() {
+    return new InstantCommand(
+      () -> RobotContainer.m_ClimbL.stopClimb(),
+      RobotContainer.m_ClimbL
+    );
+  }
+
   public static Command moveRightClimberUp() {
     return new InstantCommand(
       () -> RobotContainer.m_ClimbR.moveRightClimbUp(),
@@ -29,6 +36,13 @@ public class Climber {
     public static Command moveRightClimberDown() {
     return new InstantCommand(
       () -> RobotContainer.m_ClimbR.moveRightClimbDown(),
+      RobotContainer.m_ClimbR
+    );
+  }
+
+  public static Command stopClimberRight() {
+    return new InstantCommand(
+      () -> RobotContainer.m_ClimbR.stopClimb(),
       RobotContainer.m_ClimbR
     );
   }
