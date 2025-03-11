@@ -10,7 +10,8 @@ import frc.robot.subsystems.ClimberRightSubsystem;
 import frc.robot.subsystems.CoralDropSubsystem;
 import frc.robot.subsystems.CoralDropSubsystem;
 import frc.robot.subsystems.ClimberLeftSubsystem;
-
+import frc.robot.commands.coralDropCommand;
+import frc.robot.subsystems.CoralDrop;
 
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -42,8 +43,7 @@ public class RobotContainer
 
   public static ClimberLeftSubsystem m_ClimbL = new ClimberLeftSubsystem();
   public static ClimberRightSubsystem m_ClimbR = new ClimberRightSubsystem();
-  public static CoralDropSubsystem m_Drop = new CoralDropSubsystem();
-
+  public static CoralDrop m_CoralDrop = new CoralDrop();
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -133,24 +133,23 @@ public class RobotContainer
     //driverXbox.button(1).whileTrue(m_Climb.moveLeftClimbUp());
 
 
-    Trigger ClimbUpL = new Trigger(() -> driverXbox.getRawButton(5));
+     Trigger ClimbUpL = new Trigger(() -> driverXbox.getRawButton(3));
      ClimbUpL.whileTrue(Climber.moveLeftClimberUp());
 
-     Trigger ClimbDownL = new Trigger(() -> driverXbox.getRawButton(3));
+     Trigger ClimbDownL = new Trigger(() -> driverXbox.getRawButton(5));
      ClimbDownL.whileTrue(Climber.moveLeftClimberDown());
 
-     Trigger ClimbUpR = new Trigger(() -> driverXbox.getRawButton(6));
+     Trigger ClimbUpR = new Trigger(() -> driverXbox.getRawButton(4));
      ClimbUpR.whileTrue(Climber.moveRightClimberUp());
 
-     Trigger ClimbDownR = new Trigger(() -> driverXbox.getRawButton(4));
+     Trigger ClimbDownR = new Trigger(() -> driverXbox.getRawButton(6));
      ClimbDownR.whileTrue(Climber.moveRightClimberDown());
+     
+    Trigger upSpinButton = new Trigger(() -> driverXbox.getRawButton(1));
+    upSpinButton.whileTrue(coralDropCommand.frontSpin());
 
-     Trigger spinForwardCoralDrop = new Trigger(() -> driverXbox.getRawButton(1));
-     spinForwardCoralDrop.whileTrue(CoralDropper.forwardSpin());
-
-     Trigger spinBackwardsCoralDrop = new Trigger(() -> driverXbox.getRawButton(11));
-     spinBackwardsCoralDrop.whileTrue(CoralDropper.backwardsSpin());
-
+    Trigger downSpinButton = new Trigger(() -> driverXbox.getRawButton(11));
+    downSpinButton.whileTrue(coralDropCommand.backSpin());
     // Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
     //     driveDirectAngle);
     // Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
@@ -166,6 +165,7 @@ public class RobotContainer
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity);
       m_ClimbL.setDefaultCommand(Climber.stopClimberLeft());
       m_ClimbR.setDefaultCommand(Climber.stopClimberRight());
+      m_CoralDrop.setDefaultCommand(coralDropCommand.stopSpin());
     }
 
     if (Robot.isSimulation())

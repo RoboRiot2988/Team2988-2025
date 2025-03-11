@@ -41,7 +41,7 @@ public static final class OIConstants {
 public static final class MechanismConstants{
   public static final int kClimbLeftCanId = 14;
   public static final int kClimbRightCanId = 17;
-
+  public static final int kCoralDropCanId = 18;
 }
 
   public static final class DrivebaseConstants
