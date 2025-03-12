@@ -227,6 +227,8 @@ public class SwerveSubsystem extends SubsystemBase
    *
    * @return A {@link Command} which will run the alignment.
    */
+
+// CAMERA THINGS:
   public Command aimAtTarget(Cameras camera)
   {
 
@@ -298,6 +300,7 @@ public class SwerveSubsystem extends SubsystemBase
                                                    DriveFeedforwards.zeros(swerveDrive.getModules().length)));
     AtomicReference<Double> previousTime = new AtomicReference<>();
 
+// Start Run is returned
     return startRun(() -> previousTime.set(Timer.getFPGATimestamp()),
                     () -> {
                       double newTime = Timer.getFPGATimestamp();
@@ -412,7 +415,8 @@ public class SwerveSubsystem extends SubsystemBase
   public Command driveCommand(DoubleSupplier translationX, DoubleSupplier translationY, DoubleSupplier angularRotationX)
   {
     return run(() -> {
-      // Make the robot move
+
+// MAKE THE ROBOT MOVE
       swerveDrive.drive(SwerveMath.scaleTranslation(new Translation2d(
                             translationX.getAsDouble() * swerveDrive.getMaximumChassisVelocity(),
                             translationY.getAsDouble() * swerveDrive.getMaximumChassisVelocity()), 0.8),

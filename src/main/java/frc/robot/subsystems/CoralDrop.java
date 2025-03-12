@@ -27,17 +27,16 @@ public class CoralDrop extends SubsystemBase {
   }
 
   public void forwardSpin(){
-    coralDropMotor.set(-1);
+    coralDropMotor.set(-.3);
  }
 
   public void backwardSpin(){
-    coralDropMotor.set(1);
+    coralDropMotor.set(.3);
  }
 
   public void variableSpin(double spinSpeed){
     coralDropMotor.set(spinSpeed);
   }
- 
   /**
    * Example command factory method.
    *

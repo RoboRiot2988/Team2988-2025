@@ -7,8 +7,6 @@ package frc.robot;
 import frc.robot.commands.Climber;
 // import frc.robot.commands.CoralDropper;
 import frc.robot.subsystems.ClimberRightSubsystem;
-import frc.robot.subsystems.CoralDropSubsystem;
-import frc.robot.subsystems.CoralDropSubsystem;
 import frc.robot.subsystems.ClimberLeftSubsystem;
 import frc.robot.commands.coralDropCommand;
 import frc.robot.subsystems.CoralDrop;
@@ -148,7 +146,10 @@ public class RobotContainer
     Trigger upSpinButton = new Trigger(() -> driverXbox.getRawButton(1));
     upSpinButton.whileTrue(coralDropCommand.frontSpin());
 
-    Trigger downSpinButton = new Trigger(() -> driverXbox.getRawButton(11));
+    Trigger downSpinButton = new Trigger(() -> driverXbox.getRawButton(2));
+    downSpinButton.whileTrue(coralDropCommand.backSpin());
+
+    Trigger upSpin = new Trigger(() -> driverXbox.getRawButton(2));
     downSpinButton.whileTrue(coralDropCommand.backSpin());
     // Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
     //     driveDirectAngle);
