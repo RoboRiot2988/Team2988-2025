@@ -10,6 +10,7 @@ import frc.robot.subsystems.ClimberRightSubsystem;
 import frc.robot.subsystems.ClimberLeftSubsystem;
 import frc.robot.commands.coralDropCommand;
 import frc.robot.subsystems.CoralDrop;
+import frc.robot.subsystems.VisionSubsystem;
 
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -42,6 +43,7 @@ public class RobotContainer
   public static ClimberLeftSubsystem m_ClimbL = new ClimberLeftSubsystem();
   public static ClimberRightSubsystem m_ClimbR = new ClimberRightSubsystem();
   public static CoralDrop m_CoralDrop = new CoralDrop();
+  //public static VisionSubsystem m_Camera1 = new VisionSubsystem();
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed

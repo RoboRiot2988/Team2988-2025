@@ -41,7 +41,6 @@ import org.photonvision.targeting.PhotonTrackedTarget;
 import swervelib.SwerveDrive;
 import swervelib.telemetry.SwerveDriveTelemetry;
 
-
 /**
  * Example PhotonVision class to aid in the pursuit of accurate odometry. Taken from
  * https://gitlab.com/ironclad_code/ironclad-2024/-/blob/master/src/main/java/frc/robot/vision/Vision.java?ref_type=heads
@@ -98,7 +97,18 @@ public class Vision
       }
 
       openSimCameraViews();
+    }  else {
+      // UsbCamera camera = CameraServer.startAutomaticCapture();
+      // // Set the resolution
+      // camera.setResolution(640, 480);
+
+      // // Get a CvSink. This will capture Mats from the camera
+      // CvSink cvSink = CameraServer.getVideo();
+      // // Setup a CvSource. This will send images back to the Dashboard
+      // CvSource outputStream = CameraServer.putVideo("Rectangle", 640, 480);
+
     }
+    
   }
 
   /**
