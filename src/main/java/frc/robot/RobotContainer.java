@@ -115,6 +115,8 @@ public class RobotContainer
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
+    NamedCommands.registerCommand("CorralDrop Outake", coralDropCommand.frontSpin()); // this references a command, but may need to change to subsystem?
+    NamedCommands.registerCommand("CorralDrop Stop", coralDropCommand.stopSpin());
   }
 
   /**
