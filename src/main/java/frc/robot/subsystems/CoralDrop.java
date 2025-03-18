@@ -10,6 +10,7 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -36,6 +37,11 @@ public class CoralDrop extends SubsystemBase {
 
   public void variableSpin(double spinSpeed){
     coralDropMotor.set(spinSpeed);
+  }
+
+  public Command setSpeed(double speed) {
+    System.out.println("hello");
+    return new InstantCommand(() -> coralDropMotor.set(speed), this);
   }
   /**
    * Example command factory method.
