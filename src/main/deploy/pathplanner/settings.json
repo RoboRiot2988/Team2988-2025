@@ -15,7 +15,7 @@
   "driveWheelRadius": 0.0508,
   "driveGearing": 6.75,
   "maxDriveSpeed": 5.0,
-  "driveMotorType": "vortex",
+  "driveMotorType": "NEO",
   "driveCurrentLimit": 60.0,
   "wheelCOF": 1.19,
   "flModuleX": 0.362,
