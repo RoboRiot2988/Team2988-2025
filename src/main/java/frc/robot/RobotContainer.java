@@ -116,7 +116,7 @@ public class RobotContainer
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
     NamedCommands.registerCommand("CorralDrop Outake", m_CoralDrop.setSpeed(-0.3)); // this references a command, but may need to change to subsystem?
-    NamedCommands.registerCommand("CorralDrop Stop", m_CoralDrop.setSpeed(0));
+    NamedCommands.registerCommand("CorralDrop Stop", m_CoralDrop.setSpeed(0.0));
     NamedCommands.registerCommand("CorralDrop BackSpin", m_CoralDrop.setSpeed(0.3));
   }
 
@@ -154,8 +154,17 @@ public class RobotContainer
     Trigger downSpinButton = new Trigger(() -> driverXbox.getRawButton(2));
     downSpinButton.whileTrue(coralDropCommand.backSpin());
 
-    Trigger upSpin = new Trigger(() -> driverXbox.getRawButton(2));
-    downSpinButton.whileTrue(coralDropCommand.backSpin());
+    Trigger upForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(7));
+    upForwardCoralSpeed.whileTrue(coralDropCommand.upForwardCoralSpeedCommand());
+
+    Trigger downForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(8));
+    downForwardCoralSpeed.whileTrue(coralDropCommand.downForwardCoralSpeedCommand());
+
+    Trigger upBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(9));
+    upBackwardCoralSpeed.whileTrue(coralDropCommand.upBackwardCoralSpeedCommand());
+
+    Trigger downBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(10));
+    downBackwardCoralSpeed.whileTrue(coralDropCommand.downBackwardCoralSpeedCommand());
     // Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
     //     driveDirectAngle);
     // Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
@@ -232,7 +241,7 @@ public class RobotContainer
   {
     // An example command will be run in autonomous
     // return drivebase.getAutonomousCommand("New Auto");
-    return drivebase.getAutonomousCommand("Center Path Auto");
+    return drivebase.getAutonomousCommand("Top Path Auto");
   }
 
   public void setMotorBrake(boolean brake)

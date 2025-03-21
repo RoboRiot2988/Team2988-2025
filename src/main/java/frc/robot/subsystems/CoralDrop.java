@@ -17,6 +17,9 @@ import frc.robot.Constants;
 public class CoralDrop extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
 
+  double coralForwardSpinSpeed = -0.3;
+  double coralBackwardSpinSpeed = 0.3;
+
   private SparkMax coralDropMotor;
 
   public CoralDrop() {
@@ -28,12 +31,36 @@ public class CoralDrop extends SubsystemBase {
   }
 
   public void forwardSpin(){
-    coralDropMotor.set(-.3);
+    coralDropMotor.set(coralForwardSpinSpeed);
  }
 
   public void backwardSpin(){
-    coralDropMotor.set(.3);
+    coralDropMotor.set(coralBackwardSpinSpeed);
  }
+  
+  public void upForwardCoralSpeedSubsystem(){
+    if (coralForwardSpinSpeed > -1) {
+      coralForwardSpinSpeed -= 0.1;
+    }
+}
+
+  public void downForwardCoralSpeedSubsystem(){
+    if (coralForwardSpinSpeed < -0.3) {
+      coralForwardSpinSpeed += 0.1;
+    }
+}
+
+  public void upBackwardCoralSpeedSubsystem(){
+    if (coralBackwardSpinSpeed < 1.0) {
+      coralForwardSpinSpeed += 0.1;
+    }
+}
+
+  public void downBackwardCoralSpeedSubsystem(){
+    if (coralBackwardSpinSpeed > 0.3) {
+      coralForwardSpinSpeed -= 0.1;
+    }
+  }
 
   public void variableSpin(double spinSpeed){
     coralDropMotor.set(spinSpeed);

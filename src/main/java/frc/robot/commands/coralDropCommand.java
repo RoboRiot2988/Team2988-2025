@@ -26,4 +26,33 @@ public class coralDropCommand {
       RobotContainer.m_CoralDrop
     );
   }
+
+  public static Command upForwardCoralSpeedCommand() {
+    return new RunCommand(
+      () -> RobotContainer.m_CoralDrop.upForwardCoralSpeedSubsystem(),
+      RobotContainer.m_CoralDrop
+    );
+  }
+
+  public static Command downForwardCoralSpeedCommand() {
+    return new RunCommand(
+      () -> RobotContainer.m_CoralDrop.downForwardCoralSpeedSubsystem(),
+      RobotContainer.m_CoralDrop
+    );
+  }
+
+  public static Command upBackwardCoralSpeedCommand() {
+    return new RunCommand(
+      () -> RobotContainer.m_CoralDrop.upBackwardCoralSpeedSubsystem(),
+      RobotContainer.m_CoralDrop
+    );
+  }
+
+  public static Command downBackwardCoralSpeedCommand() {
+    return new RunCommand(
+      () -> RobotContainer.m_CoralDrop.downBackwardCoralSpeedSubsystem(),
+      RobotContainer.m_CoralDrop
+    );
+  }
+
 }
