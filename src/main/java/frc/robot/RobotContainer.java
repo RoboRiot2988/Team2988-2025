@@ -43,7 +43,7 @@ public class RobotContainer
   public static ClimberLeftSubsystem m_ClimbL = new ClimberLeftSubsystem();
   public static ClimberRightSubsystem m_ClimbR = new ClimberRightSubsystem();
   public static CoralDrop m_CoralDrop = new CoralDrop();
-  public static VisionSubsystem m_Camera1 = new VisionSubsystem();
+ // public static VisionSubsystem m_Camera1 = new VisionSubsystem();
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -154,17 +154,17 @@ public class RobotContainer
     Trigger downSpinButton = new Trigger(() -> driverXbox.getRawButton(2));
     downSpinButton.whileTrue(coralDropCommand.backSpin());
 
-    Trigger upForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(7));
-    upForwardCoralSpeed.whileTrue(coralDropCommand.upForwardCoralSpeedCommand());
+    // Trigger upForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(7));
+    // upForwardCoralSpeed.whileTrue(coralDropCommand.upForwardCoralSpeedCommand());
 
-    Trigger downForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(8));
-    downForwardCoralSpeed.whileTrue(coralDropCommand.downForwardCoralSpeedCommand());
+    // Trigger downForwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(8));
+    // downForwardCoralSpeed.whileTrue(coralDropCommand.downForwardCoralSpeedCommand());
 
-    Trigger upBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(9));
-    upBackwardCoralSpeed.whileTrue(coralDropCommand.upBackwardCoralSpeedCommand());
+    // Trigger upBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(9));
+    // upBackwardCoralSpeed.whileTrue(coralDropCommand.upBackwardCoralSpeedCommand());
 
-    Trigger downBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(10));
-    downBackwardCoralSpeed.whileTrue(coralDropCommand.downBackwardCoralSpeedCommand());
+    // Trigger downBackwardCoralSpeed = new Trigger(() -> driverXbox.getRawButton(10));
+    // downBackwardCoralSpeed.whileTrue(coralDropCommand.downBackwardCoralSpeedCommand());
     // Command driveSetpointGen = drivebase.driveWithSetpointGeneratorFieldRelative(
     //     driveDirectAngle);
     // Command driveFieldOrientedDirectAngleKeyboard      = drivebase.driveFieldOriented(driveDirectAngleKeyboard);
@@ -241,7 +241,10 @@ public class RobotContainer
   {
     // An example command will be run in autonomous
     // return drivebase.getAutonomousCommand("New Auto");
-    return drivebase.getAutonomousCommand("Top Path Auto");
+    return drivebase.getAutonomousCommand("Center Path Auto");
+    // return drivebase.getAutonomousCommand("Bottom Path Auto");
+    // return drivebase.getAutonomousCommand("Top Path Auto");
+
   }
 
   public void setMotorBrake(boolean brake)
