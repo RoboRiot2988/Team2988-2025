@@ -30,7 +30,9 @@ public class VisionSubsystem extends SubsystemBase {
 
               UsbCamera camera1 = CameraServer.startAutomaticCapture(0);
               // Set the resolution
-              camera1.setResolution(640, 480);
+              camera1.setResolution(320, 240);
+              camera1.setFPS(15);
+              
 
   }
   /**
